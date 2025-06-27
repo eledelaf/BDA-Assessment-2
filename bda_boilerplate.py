@@ -70,6 +70,17 @@ def download_youtube_audio_with_metadata(url: str):
     except Exception as e:
         print(f"❌ Failed to download: {url}\n   Error: {e}")
 
+def download_sem(url, semaphore):
+    with semaphore:
+        print(f"\n🎵 Downloading: {url}")
+        try:
+            info = get_video_info(url)
+            metadata = extract_metadata(info)
+            json_path = save_metadata_to_file(metadata, metadata["title"])
+            print(f"✅ Done: {metadata['title']}\n📄 Metadata: {json_path}")
+        except Exception as e:
+            print(f"❌ Failed to download: {url}\n   Error: {e}")
+
 def parallel_runner(l_urls):
     # I used the code from the lab class 
     start = time.time()
@@ -83,6 +94,20 @@ def parallel_runner(l_urls):
     end = time.time()
     t = end-start
     print(f"Runing a parallel process took {round(t,2)} seconds")
+
+def parallel_runner_sem(l_urls, n=5):
+    start = time.time()
+    semaphore = mp.Semaphore(n)
+    processes = []
+    for uls  in l_urls:
+        p = mp.Process(target = download_sem, args = [url, semaphore])
+        p.start()
+        processes.append(p)
+    for process in processes:
+        process.join()
+    end = time.time()
+    t = end-start
+    print(f"Runing a parallel process with semaphore took {round(t,2)} seconds")
     
 if __name__ == "__main__":
     with open("video_urls.txt", mode = "r") as urls:
@@ -102,3 +127,5 @@ if __name__ == "__main__":
     print(f"Runing a serial process took {round(end-start,2)} seconds")
 
     parallel_runner(youtube_urls)
+
+    parallel_runner_sem(youtube_urls)

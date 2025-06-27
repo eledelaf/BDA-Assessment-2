@@ -2,4 +2,4 @@
 # Step 3: 
 After running the parallel version and the serial version we can conclude that; 
 the parallel version is much quiker. The time it took for the parallel version to 
-download all of the videos was 3.71 seconds while the serial version took 21.64 seconds
+download all of the videos was 3.8 seconds while the serial version took around 23 seconds and running a 
