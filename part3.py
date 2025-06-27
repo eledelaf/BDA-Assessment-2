@@ -16,6 +16,8 @@ mode_pd = df["uploader"].mode()
 print(f"The most popular uploader is: {mode_pd[0]}")
 
 # 3. Which five videos have the highest number of views? List their titles and view counts.
+top_5_pd = df.sort_values(by =["view_count"]).head(5)
+print(top_5_pd[["title","view_count"]])
 
 # 4. For each upload year, what is the average number of likes?
 
