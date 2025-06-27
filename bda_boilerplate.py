@@ -88,14 +88,14 @@ def download_sem(url, semaphore):
             logging(url, False)
 
 def logging(url: str, download: bool):
-    with open("downoal_log.txt", "a") as file: # "a" = append
+    with open("download_log.txt", "a") as file: # "a" = append
         timestamp = datetime.now().isoformat(timespec = "seconds")
         d = {"timestamp": timestamp, 
              "url": url,
              "download": download}
         file.write(json.dumps(d))
         file.write("\n")
-        file.close
+        #file.close
 
 def parallel_runner(l_urls):
     # I used the code from the lab class 
