@@ -6,6 +6,10 @@ import time
 import multiprocessing as mp 
 import concurrent.futures
 
+from datetime import datetime 
+timestamp = datetime.now().isoformat(timespec = "seconds")
+
+
 OUTPUT_DIR = "audio_output"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 os.environ["SSL_CERT_FILE"] = certifi.where()
