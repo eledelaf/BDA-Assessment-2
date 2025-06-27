@@ -61,6 +61,17 @@ def save_metadata_to_file(metadata: dict, title: str) -> str:
         json.dump(metadata, f, indent=2, ensure_ascii=False)
     return file_path
 
+def logging(url: str, download: bool):
+    """ After each download writes a log to the "download_log.txt" file """
+    with open("download_log.txt", "a") as file: # "a" = append
+        timestamp = datetime.now().isoformat(timespec = "seconds")
+        d = {"timestamp": timestamp, 
+             "url": url,
+             "download": download}
+        file.write(json.dumps(d))
+        file.write("\n")
+        #file.close
+    
 def download_youtube_audio_with_metadata(url: str):
     """Main function to download audio and save metadata."""
     print(f"\n🎵 Downloading: {url}")
@@ -75,6 +86,7 @@ def download_youtube_audio_with_metadata(url: str):
         logging(url, False)
 
 def download_sem(url, semaphore):
+    """ Main function to download audio and save metadata using the semaphore method."""
     with semaphore:
         print(f"\n🎵 Downloading: {url}")
         try:
@@ -86,16 +98,6 @@ def download_sem(url, semaphore):
         except Exception as e:
             print(f"❌ Failed to download: {url}\n   Error: {e}")
             logging(url, False)
-
-def logging(url: str, download: bool):
-    with open("download_log.txt", "a") as file: # "a" = append
-        timestamp = datetime.now().isoformat(timespec = "seconds")
-        d = {"timestamp": timestamp, 
-             "url": url,
-             "download": download}
-        file.write(json.dumps(d))
-        file.write("\n")
-        #file.close
 
 def parallel_runner(l_urls):
     # I used the code from the lab class 
@@ -134,13 +136,6 @@ if __name__ == "__main__":
     with open("video_urls.txt", mode = "r") as urls:
         youtube_urls = [linea.rstrip() for linea in urls]
 
-    """
-    youtube_urls = [
-        "https://youtu.be/4D7u5KF7SP8?si=Y_S0k_5MbdW5mKI2",
-        "https://youtu.be/Q3Bp1QVVieM?si=4BlPs5dpK3Y-iPYr",
-        "https://youtu.be/5m4ZkEqQrn0?si=7DfUDfMGKkbktUDi"
-    ]
-    """
     start = time.time()
     for url in youtube_urls:
         download_youtube_audio_with_metadata(url)
