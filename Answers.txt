@@ -14,3 +14,15 @@
     The problems are that is more complicated to code and to understand, we do not know the order in wich the 
     downloads are completed so in case of error that could be a problem. 
 3. How do time complexity and space complexity change?
+    Serial:
+    - Time complexity: O(n)
+    - Space complexity: O(1)
+
+    Parallel without semaphore:
+    - Time complexity: O(1)
+    - Space complexity: O(n)
+
+    Parallel with semaphore:
+    - Time complexity: O(n/5)
+    - Space complexity: O(5)
+    

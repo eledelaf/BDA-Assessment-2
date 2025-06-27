@@ -97,15 +97,19 @@ def parallel_runner(l_urls):
 
 def parallel_runner_sem(l_urls, n=5):
     start = time.time()
+    
     manager = mp.Manager()
     semaphore = manager.Semaphore(n)
+
     processes = []
-    for uls  in l_urls:
-        p = mp.Process(target = download_sem, args = [url, semaphore])
+    for urls  in l_urls:
+        p = mp.Process(target = download_sem, args = (urls, semaphore))
         p.start()
         processes.append(p)
+
     for process in processes:
         process.join()
+
     end = time.time()
     t = end-start
     print(f"Runing a parallel process with semaphore took {round(t,2)} seconds")
