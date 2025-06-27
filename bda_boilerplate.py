@@ -7,8 +7,6 @@ import multiprocessing as mp
 import concurrent.futures
 
 from datetime import datetime 
-timestamp = datetime.now().isoformat(timespec = "seconds")
-
 
 OUTPUT_DIR = "audio_output"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
@@ -84,6 +82,15 @@ def download_sem(url, semaphore):
             print(f"✅ Done: {metadata['title']}\n📄 Metadata: {json_path}")
         except Exception as e:
             print(f"❌ Failed to download: {url}\n   Error: {e}")
+
+def logging(url: str, download: bool):
+    with open("downoal_log.txt", "a") as file: # "a" = append
+        timestamp = datetime.now().isoformat(timespec = "seconds")
+        d = {"timestamp": timestamp, 
+             "url": url,
+             "download": download}
+        file.write(json.dumps(d))
+        file.close
 
 def parallel_runner(l_urls):
     # I used the code from the lab class 
