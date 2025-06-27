@@ -69,8 +69,10 @@ def download_youtube_audio_with_metadata(url: str):
         metadata = extract_metadata(info)
         json_path = save_metadata_to_file(metadata, metadata["title"])
         print(f"✅ Done: {metadata['title']}\n📄 Metadata: {json_path}")
+        logging(url, True)
     except Exception as e:
         print(f"❌ Failed to download: {url}\n   Error: {e}")
+        logging(url, False)
 
 def download_sem(url, semaphore):
     with semaphore:
@@ -80,8 +82,10 @@ def download_sem(url, semaphore):
             metadata = extract_metadata(info)
             json_path = save_metadata_to_file(metadata, metadata["title"])
             print(f"✅ Done: {metadata['title']}\n📄 Metadata: {json_path}")
+            logging(url, True)
         except Exception as e:
             print(f"❌ Failed to download: {url}\n   Error: {e}")
+            logging(url, False)
 
 def logging(url: str, download: bool):
     with open("downoal_log.txt", "a") as file: # "a" = append
@@ -90,6 +94,7 @@ def logging(url: str, download: bool):
              "url": url,
              "download": download}
         file.write(json.dumps(d))
+        file.write("\n")
         file.close
 
 def parallel_runner(l_urls):
