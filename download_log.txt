@@ -1,4 +1,0 @@
-yt-dlp
-certifi
-pandas
-pyspark
