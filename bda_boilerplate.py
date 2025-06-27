@@ -4,8 +4,6 @@ import os
 import json
 import time 
 import multiprocessing as mp 
-import concurrent.futures
-
 from datetime import datetime 
 
 OUTPUT_DIR = "audio_output"
