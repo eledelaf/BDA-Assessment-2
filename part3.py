@@ -7,10 +7,13 @@ print(df.head())
 
 ## 3.1: Descriptive Statistics
 # 1. What is the average duration (in seconds) of all videos in the dataset?
-mean_pd = df["duration_seconds"].mean(axis=1)
+mean_pd = df[["duration_seconds"]].mean()
+print(f"The mean in seconds of the durations of the videos is: {round(mean_pd["duration_seconds"], 2)}")
 mean_spark = 0
 
 # 2. Which uploader appears most frequently in the dataset?
+mode_pd = df["uploader"].mode()
+print(f"The most popular uploader is: {mode_pd[0]}")
 
 # 3. Which five videos have the highest number of views? List their titles and view counts.
 
