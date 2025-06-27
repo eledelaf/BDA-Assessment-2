@@ -1,0 +1,3 @@
+#!/Users/elenadelafuente/Desktop/MASTER/2 trimestre/Big Data/Assesments/BDA Capstone project/bigData/bin/python3
+from spark import spark_admin
+spark_admin.main()
