@@ -25,6 +25,6 @@ if __name__ == "__main__":
                 "like_count", "year_uploaded", "tag_count"]
     df = df[l_fields]
     print(df.head())
-    print(df.shape)
-    print(df["title"])
+    #print(df.shape)
+    #print(df["title"])
     df.to_csv("combined_data.csv", index = False)
