@@ -1,5 +1,16 @@
 ---- Part 1: Audio Download Pipeline and Logging ----
 # Step 3: 
-After running the parallel version and the serial version we can conclude that; 
-the parallel version is much quiker. The time it took for the parallel version to 
-download all of the videos was 3.8 seconds while the serial version took around 23 seconds and running a 
+1. Which one is faster?
+    After running the parallel version and the serial version we can conclude that; 
+    the parallel version is much quiker. The time it took for the parallel version to 
+    download all of the videos was 3.8 seconds while the serial version took around 23 seconds 
+    and running a parallel programming with a semaphore with n=5 max number of processes 
+    happening at the time tooks about 6 seconds.
+2. What are the trade-offs?
+    On one hand seriall programming is easier to code, and easier to understnad. Since the code goes 
+    one by one in each of the processes we avoid some problems like overlapping the CPU 
+    or other possible problems that can come by downloading multiple files at the same time.
+    On the other hand parallel programming is faster and with working with big amounts of data is more useful.
+    The problems are that is more complicated to code and to understand, we do not know the order in wich the 
+    downloads are completed so in case of error that could be a problem. 
+3. How do time complexity and space complexity change?

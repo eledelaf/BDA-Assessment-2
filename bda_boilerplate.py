@@ -85,8 +85,8 @@ def parallel_runner(l_urls):
     # I used the code from the lab class 
     start = time.time()
     processes = []
-    for uls  in l_urls:
-        p = mp.Process(target = download_youtube_audio_with_metadata, args = [url])
+    for urls  in l_urls:
+        p = mp.Process(target = download_youtube_audio_with_metadata, args = [urls])
         p.start()
         processes.append(p)
     for process in processes:
@@ -97,7 +97,8 @@ def parallel_runner(l_urls):
 
 def parallel_runner_sem(l_urls, n=5):
     start = time.time()
-    semaphore = mp.Semaphore(n)
+    manager = mp.Manager()
+    semaphore = manager.Semaphore(n)
     processes = []
     for uls  in l_urls:
         p = mp.Process(target = download_sem, args = [url, semaphore])
