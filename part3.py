@@ -20,6 +20,8 @@ top_5_pd = df.sort_values(by =["view_count"]).head(5)
 print(top_5_pd[["title","view_count"]])
 
 # 4. For each upload year, what is the average number of likes?
+df_year_likes = df.groupby["year"]
+print(df_year_likes)
 
 # 5. How many videos are missing artist information?
 
