@@ -20,10 +20,14 @@ top_5_pd = df.sort_values(by =["view_count"]).head(5)
 print(top_5_pd[["title","view_count"]])
 
 # 4. For each upload year, what is the average number of likes?
-df_year_likes = df.groupby["year"]
+df_year_likes = df[["year_uploaded", "like_count"]]
+df_year_likes = df_year_likes.groupby(["year_uploaded"]).mean()
 print(df_year_likes)
 
 # 5. How many videos are missing artist information?
+df_is_null = pd.isnull(df) # This returns a df of true or false depending on if is null or not
+
+print(df_is_null)
 
 ## 3.2: Tag and Content Characteristics
 # 1. How many tags does each video have? Visualize the distribution using a histogram.
