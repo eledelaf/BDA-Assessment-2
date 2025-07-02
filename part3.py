@@ -25,7 +25,8 @@ df_year_likes = df_year_likes.groupby(["year_uploaded"]).mean()
 print(df_year_likes)
 
 # 5. How many videos are missing artist information?
-df_is_null = pd.isnull(df) # This returns a df of true or false depending on if is null or not
+df_is_null = pd.isnull(df["artist"]) # This returns a df of true or false depending on if is null or not
+
 print(df_is_null)
 
 
