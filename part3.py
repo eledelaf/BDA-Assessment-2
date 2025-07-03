@@ -73,3 +73,6 @@ uploader = df_duration["duration_seconds"].idxmax()
 print(f"The uploader with the longest total duration is: ", uploader)
 
 # 3. What is the ratio of views to likes for each video?
+df["views/likes"] = round(df["view_count"]/df["like_count"],2)
+df_views_likes = df[["title", "views/likes"]]
+print(df_views_likes)
