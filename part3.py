@@ -49,10 +49,13 @@ long_v = long_row["title"].values[0]
 print(f"The longest video is: ", long_v)
 
 # 4. How many videos were uploaded in each year? Present the results sorted by year.
-
+df_year = df[["year_uploaded"]].groupby(["year_uploaded"]).size()
+df_year = df_year.sort_index()
+print(df_year)
 
 # 5. Is there a correlation between the number of views and the number of likes? 
 # Feel free to drop or filter rows with missing or zero values before computing correlation.
+
 
 ## 3.3: Derived Metrics & Custom Analysis
 # 1. Which video has the highest number of likes per second of duration?
