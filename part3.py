@@ -67,5 +67,9 @@ video = video_row["title"].values[0]
 print(f"The video with the highest number of likes per second is : ", video)
 
 # 2. Which uploader has the longest total duration of all their uploaded videos combined?
+df_duration = df[["uploader", "duration_seconds"]]
+df_duration = df_duration.groupby(["uploader"]).sum()
+uploader = df_duration["duration_seconds"].idxmax()
+print(f"The uploader with the longest total duration is: ", uploader)
 
 # 3. What is the ratio of views to likes for each video?
