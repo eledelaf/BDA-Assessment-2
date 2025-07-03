@@ -60,6 +60,11 @@ print(df_corr.corr())
 
 ## 3.3: Derived Metrics & Custom Analysis
 # 1. Which video has the highest number of likes per second of duration?
+df["likes/second"] = round(df["like_count"]/df["duration_seconds"],2)
+max_likes = df["likes/second"].max()
+video_row = df[df["likes/second"] == max_likes]
+video = video_row["title"].values[0]
+print(f"The video with the highest number of likes per second is : ", video)
 
 # 2. Which uploader has the longest total duration of all their uploaded videos combined?
 
