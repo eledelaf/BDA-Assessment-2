@@ -43,9 +43,13 @@ df_views_uploader["rank"] = df_views_uploader["view_count"].rank(method = "max",
 print(df_views_uploader)
 
 # 3. Which video has the longest duration? List the title and its duration.
-
+long = df["duration_seconds"].max()
+long_row = df[df["duration_seconds"] == long]
+long_v = long_row["title"].values[0]
+print(f"The longest video is: ", long_v)
 
 # 4. How many videos were uploaded in each year? Present the results sorted by year.
+
 
 # 5. Is there a correlation between the number of views and the number of likes? 
 # Feel free to drop or filter rows with missing or zero values before computing correlation.
