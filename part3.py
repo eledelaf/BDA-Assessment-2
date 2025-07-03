@@ -55,7 +55,8 @@ print(df_year)
 
 # 5. Is there a correlation between the number of views and the number of likes? 
 # Feel free to drop or filter rows with missing or zero values before computing correlation.
-
+df_corr = df[["view_count", "like_count"]]
+print(df_corr.corr())
 
 ## 3.3: Derived Metrics & Custom Analysis
 # 1. Which video has the highest number of likes per second of duration?
