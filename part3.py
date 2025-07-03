@@ -32,13 +32,18 @@ print(is_null)
 
 ## 3.2: Tag and Content Characteristics
 # 1. How many tags does each video have? Visualize the distribution using a histogram.
-df["tag_count"].hist()
-plt.show()
+#df["tag_count"].hist()
+#plt.show()
+#plt.close()
 
 # 2. What is the total number of views per uploader? Rank the results in descending order.
-
+df_views_uploader = df[["uploader", "view_count"]]
+df_views_uploader = df_views_uploader.groupby(["uploader"]).sum()
+df_views_uploader["rank"] = df_views_uploader["view_count"].rank(method = "max", ascending = False)
+print(df_views_uploader)
 
 # 3. Which video has the longest duration? List the title and its duration.
+
 
 # 4. How many videos were uploaded in each year? Present the results sorted by year.
 
