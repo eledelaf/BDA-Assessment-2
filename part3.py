@@ -1,5 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+from pyspark.sql import SparkSession
 
 # Import the data frame
 df = pd.read_csv("combined_data.csv")
@@ -29,6 +30,7 @@ is_null = df["artist"].isna().sum()
 print(is_null)
 
 # 3.1: Descriptive Statistics (spark) FALTA
+spark = SparkSession.builder.appName("Assignment").getOrCreate()
 
 ## 3.2: Tag and Content Characteristics
 # 1. How many tags does each video have? Visualize the distribution using a histogram.
