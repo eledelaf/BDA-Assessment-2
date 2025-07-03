@@ -1,11 +1,11 @@
 import pandas as pd
-import spark 
+import matplotlib.pyplot as plt
 
 # Import the data frame
 df = pd.read_csv("combined_data.csv")
 print(df.head())
 
-## 3.1: Descriptive Statistics
+## 3.1: Descriptive Statistics (pandas)
 # 1. What is the average duration (in seconds) of all videos in the dataset?
 mean_pd = df[["duration_seconds"]].mean()
 print(f"The mean in seconds of the durations of the videos is: {round(mean_pd["duration_seconds"], 2)}")
@@ -28,10 +28,15 @@ print(df_year_likes)
 is_null = df["artist"].isna().sum()
 print(is_null)
 
+# 3.1: Descriptive Statistics (spark) FALTA
+
 ## 3.2: Tag and Content Characteristics
 # 1. How many tags does each video have? Visualize the distribution using a histogram.
+df["tag_count"].hist()
+plt.show()
 
 # 2. What is the total number of views per uploader? Rank the results in descending order.
+
 
 # 3. Which video has the longest duration? List the title and its duration.
 
