@@ -33,7 +33,8 @@ print(is_null)
 # 3.1: Descriptive Statistics (spark) FALTA
 print("SPARK")
 spark = SparkSession.builder.appName("Assignment").getOrCreate()
-df_sp = spark.read.csv("combined_data.csv", header = True, sep = ",")
+df_sp = spark.read.option("header", True).option("inferSchema", True).option("quote", '"').csv("combined_data.csv")
+df_sp.printSchema()
 df_sp.show()
 
 # 1. What is the average duration (in seconds) of all videos in the dataset?
@@ -44,8 +45,10 @@ top_uploader = df_sp.groupBy("uploader").count().orderBy("count", ascending = Fa
 print("The top uploader is: ", top_uploader["uploader"] )
 
 # 3. Which five videos have the highest number of views? List their titles and view counts.
+df_sp.select("title", "view_count").orderBy("view_count").show(5)
 
 # 4. For each upload year, what is the average number of likes?
+df_sp.select()
 
 # 5. How many videos are missing artist information?
 
