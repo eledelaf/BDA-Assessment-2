@@ -48,9 +48,10 @@ print("The top uploader is: ", top_uploader["uploader"] )
 df_sp.select("title", "view_count").orderBy("view_count").show(5)
 
 # 4. For each upload year, what is the average number of likes?
-df_sp.select()
+df_sp.groupBy("year_uploaded").agg(avg("like_count")).show()
 
 # 5. How many videos are missing artist information?
+
 
 
 ## 3.2: Tag and Content Characteristics
