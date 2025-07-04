@@ -5,7 +5,7 @@ from pyspark.sql.functions import avg, col
 import ast
 
 # Import the data frame
-df = pd.read_csv("combined_data.csv")
+df = pd.read_csv("combined_data.csv", sep = ";")
 print(df.head())
 
 ## 3.1: Descriptive Statistics (pandas)
@@ -34,7 +34,7 @@ print(is_null)
 # 3.1: Descriptive Statistics (spark) FALTA
 print("SPARK")
 spark = SparkSession.builder.appName("Assignment").getOrCreate()
-df_sp = spark.read.option("header", True).option("inferSchema", True).option("quote", '"').csv("combined_data.csv")
+df_sp = spark.read.option("header", True).option("inferSchema", True).option("sep", ';').csv("combined_data.csv")
 df_sp.printSchema()
 df_sp.show()
 
@@ -57,9 +57,9 @@ print("The number of artist missing is: ", n_artist_nan)
 
 ## 3.2: Tag and Content Characteristics
 # 1. How many tags does each video have? Visualize the distribution using a histogram.
-#df["tag_count"].hist()
-#plt.show()
-#plt.close()
+plt.ion()
+df["tag_count"].hist()
+plt.show()
 
 # 2. What is the total number of views per uploader? Rank the results in descending order.
 df_views_uploader = df[["uploader", "view_count"]]

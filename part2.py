@@ -28,4 +28,4 @@ if __name__ == "__main__":
     print(df.head())
     #print(df.shape)
     #print(df["title"])
-    df.to_csv("combined_data.csv", index = False)
+    df.to_csv("combined_data.csv", index = False, sep = ';')
