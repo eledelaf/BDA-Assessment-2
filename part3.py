@@ -58,8 +58,15 @@ print("The number of artist missing is: ", n_artist_nan)
 ## 3.2: Tag and Content Characteristics
 # 1. How many tags does each video have? Visualize the distribution using a histogram.
 plt.ion()
-df["tag_count"].hist()
-plt.show()
+plt.figure(figsize=(8, 5))
+plt.hist(df["tag_count"], bins=range(0, df["tag_count"].max() + 2), edgecolor='black')
+plt.title("Distribution of tags per video")
+plt.xlabel("Number of tags")
+plt.ylabel("Number of vídeos")
+plt.grid(axis='y')
+plt.tight_layout()
+plt.savefig("tag_distribution_histogram.png")
+
 
 # 2. What is the total number of views per uploader? Rank the results in descending order.
 df_views_uploader = df[["uploader", "view_count"]]
