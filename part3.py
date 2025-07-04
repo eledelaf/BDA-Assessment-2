@@ -30,7 +30,21 @@ is_null = df["artist"].isna().sum()
 print(is_null)
 
 # 3.1: Descriptive Statistics (spark) FALTA
+print("SPARK")
 spark = SparkSession.builder.appName("Assignment").getOrCreate()
+df_sp = spark.read.csv("combined_data.csv", header = True, sep = ",")
+df_sp.show()
+
+# 1. What is the average duration (in seconds) of all videos in the dataset?
+
+# 2. Which uploader appears most frequently in the dataset?
+
+# 3. Which five videos have the highest number of views? List their titles and view counts.
+
+# 4. For each upload year, what is the average number of likes?
+
+# 5. How many videos are missing artist information?
+
 
 ## 3.2: Tag and Content Characteristics
 # 1. How many tags does each video have? Visualize the distribution using a histogram.
