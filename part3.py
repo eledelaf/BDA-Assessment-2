@@ -1,6 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 from pyspark.sql import SparkSession
+from pyspark.sql.functions import avg, count
 
 # Import the data frame
 df = pd.read_csv("combined_data.csv")
@@ -36,8 +37,10 @@ df_sp = spark.read.csv("combined_data.csv", header = True, sep = ",")
 df_sp.show()
 
 # 1. What is the average duration (in seconds) of all videos in the dataset?
+df_sp.select(avg("duration_seconds")).show()
 
 # 2. Which uploader appears most frequently in the dataset?
+df_sp.select(count("uploader")).show()
 
 # 3. Which five videos have the highest number of views? List their titles and view counts.
 
