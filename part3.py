@@ -40,7 +40,8 @@ df_sp.show()
 df_sp.select(avg("duration_seconds")).show()
 
 # 2. Which uploader appears most frequently in the dataset?
-df_sp.select(count("uploader")).show()
+top_uploader = df_sp.groupBy("uploader").count().orderBy("count", ascending = False).first()
+print("The top uploader is: ", top_uploader["uploader"] )
 
 # 3. Which five videos have the highest number of views? List their titles and view counts.
 
