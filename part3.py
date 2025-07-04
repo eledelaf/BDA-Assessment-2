@@ -2,6 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import avg, col
+import ast
 
 # Import the data frame
 df = pd.read_csv("combined_data.csv")
