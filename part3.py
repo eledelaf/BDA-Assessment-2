@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import avg, count
+from pyspark.sql.functions import avg, col
 
 # Import the data frame
 df = pd.read_csv("combined_data.csv")
@@ -51,8 +51,8 @@ df_sp.select("title", "view_count").orderBy("view_count").show(5)
 df_sp.groupBy("year_uploaded").agg(avg("like_count")).show()
 
 # 5. How many videos are missing artist information?
-
-
+n_artist_nan = df_sp.filter(col("artist").isNull()).count()
+print("The number of artist missing is: ", n_artist_nan)
 
 ## 3.2: Tag and Content Characteristics
 # 1. How many tags does each video have? Visualize the distribution using a histogram.
