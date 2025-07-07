@@ -4,11 +4,18 @@
 The goal of Part 1 is to create a working pipeline that downloads audio from a list of Youtube URLs, extracts the metadata, and logs the process. This has been done in two ways, a serial way and a parallel way. 
 
 ### Pipeline
-1. URL Collection:
-2. URL Loading:
-3. Audio and Metadata Download:
-4. Logging:
-5. Error Handling:
+
+The text file named video_urls.txt contains 10+ Youtube video URLs, each on a separate line. 
+
+We open the .txt file using this line
+1. get_video_info():
+2. extract_metadata():
+3. save_metadata_to_file():
+4. logging():
+5. download_youtube_audio_with_metadata():
+6. download_sem():
+7. parallel_runner():
+8. parallel_runner_sem():
 
 ### Serial vs Parallel
 The assesment asked to do two different process to download the data, one serial and one parllel extracting 5 songs at the time. I did that and also I wanted to try to extract all of the information at once. 
