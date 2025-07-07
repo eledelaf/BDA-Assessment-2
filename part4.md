@@ -15,6 +15,8 @@ The positive notes about the serial approach would be that ise reliable and simp
 The parallel programming on the other hand is more complex to program and if there is an error on the process i thing is more difficult to know where the problem is. The good things about this is that is faster and more scalable.
 
 ## Part 2: Audio Data Extraction
+The code in this part was provided by the teacher, I only changed the separation when saving the csv file since some of the data had comas inside i was having some problems downloading the data set when using spark. The solution i found was changig this line of code: " df.to_csv("combined_data.csv", index = False)" to  "df.to_csv("combined_data.csv", index = False, sep = ';')".
+What this code does is create a .csv document with the information of each video in the list of URLs in .txt
 
 ## Part 3: Data Analysis
 
