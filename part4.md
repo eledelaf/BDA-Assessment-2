@@ -36,4 +36,7 @@ The code in this part was provided by the teacher, I only changed the separation
 What this code does is create a .csv document with the information of each video in the list of URLs in .txt
 
 ## Part 3: Data Analysis
+### 3.1 Descriptive Statistics
+### 3.2 Tag and Content Characteristics
+### 3.3 Derived Metrics & Custom Analysis
 
