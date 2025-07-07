@@ -20,7 +20,7 @@ mode_pd = df["uploader"].mode()
 print(f"The most popular uploader is: {mode_pd[0]}")
 
 # 3. Which five videos have the highest number of views? List their titles and view counts.
-top_5_pd = df[["title","view_count" ]].sort_values(by =["view_count"]).head(5)
+top_5_pd = df[["title","view_count" ]].sort_values(by =["view_count"], ascending = False).head(5)
 print(top_5_pd)
 
 # 4. For each upload year, what is the average number of likes?
@@ -33,7 +33,7 @@ is_null = df["artist"].isna().sum()
 print("The number of missing artist information is: ", is_null)
 
 # 3.1: Descriptive Statistics (spark)
-print("Descriptive Statistics (sprak)")
+print("Descriptive Statistics (spark)")
 
 spark = SparkSession.builder.appName("Assignment").getOrCreate()
 df_sp = spark.read.option("header", True).option("inferSchema", True).option("sep", ';').csv("combined_data.csv")
@@ -43,7 +43,6 @@ df_sp.show()
 # 1. What is the average duration (in seconds) of all videos in the dataset?
 print("The average duration in seconds is:")
 df_sp.select(avg("duration_seconds")).show()
-
 
 # 2. Which uploader appears most frequently in the dataset?
 top_uploader = df_sp.groupBy("uploader").count().orderBy("count", ascending = False).first()
