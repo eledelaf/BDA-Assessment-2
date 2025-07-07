@@ -36,7 +36,26 @@ The code in this part was provided by the teacher, I only changed the separation
 What this code does is create a .csv document with the information of each video in the list of URLs in .txt
 
 ## Part 3: Data Analysis
-### 3.1 Descriptive Statistics
-### 3.2 Tag and Content Characteristics
-### 3.3 Derived Metrics & Custom Analysis
+For this part, I worked with the combined_metadata.csv that we created in part 2. I used both pandas and spark to run the required analyses. Since the dataset is relatively small, pandas was quicker and easier to use, but i also used spark for part 3.1.
 
+### 3.1 Descriptive Statistics
+The main tasks in this section where completed by pandas and spark:
+1. I calculated the average video duration in seconds using both pandas and Spark.
+2. I grouped by the uploader column and counted how often each one appears.
+3. Sorted the DataFrame by view_count and selected the top 5.
+4. I used groupby() in pandas and groupBy().agg() in Spark.
+5. I counted how many rows had a null or missing value in the artist column.
+
+### 3.2 Tag and Content Characteristics
+This part focused on tags, content trends and distributions:
+1. Visualize the distribution using a histogram.
+2. Ranking the results of a query.
+3. List the title and its duration. 
+4. Present results sorted by a specific column. 
+5. Look for a correlation.
+
+### 3.3 Derived Metrics & Custom Analysis
+In this section we had to do a few extra calculations for the dataset:
+1. Likes per second of duration.
+2. Total duration per uploader.
+3. Views to likes radio.
