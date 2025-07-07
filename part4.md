@@ -1,5 +1,4 @@
 # AudioPulse Capstone Project Report
-
 ## Part 1: Audio Download Pipeline & Logging
 The goal of Part 1 is to create a working pipeline that downloads audio from a list of YouTube URLs, extracts the metadata, and logs the process. This has been done in two ways: a serial version and a parallel version.
 
