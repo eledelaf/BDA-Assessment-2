@@ -7,7 +7,9 @@ import multiprocessing as mp
 from datetime import datetime 
 
 OUTPUT_DIR = "audio_output"
+LOG_DIR = "logs"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
+os.makedirs(LOG_DIR, exist_ok=True)
 os.environ["SSL_CERT_FILE"] = certifi.where()
 
 def get_video_info(url: str, download: bool = True) -> dict:
@@ -61,14 +63,15 @@ def save_metadata_to_file(metadata: dict, title: str) -> str:
 
 def logging(url: str, download: bool):
     """ After each download writes a log to the "download_log.txt" file """
-    with open("download_log.txt", "a") as file: # "a" = append
+    log_path = os.path.join(LOG_DIR, "download_log.txt")
+    #with open("download_log.txt", "a") as file: # "a" = append
+    with open(log_path, "a") as file: # "a" = append
         timestamp = datetime.now().isoformat(timespec = "seconds")
         d = {"timestamp": timestamp, 
              "url": url,
              "download": download}
         file.write(json.dumps(d))
         file.write("\n")
-        #file.close
     
 def download_youtube_audio_with_metadata(url: str):
     """Main function to download audio and save metadata."""
